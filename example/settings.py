@@ -98,10 +98,10 @@ WSGI_APPLICATION = 'example.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'example',
+        'NAME': 'djangodb',
         'USER': 'postgres',
         'PASSWORD': 'django123',
-        'HOST': 'localhost',
+        'HOST': 'djangodb.cx66626swkbj.us-west-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
