@@ -4,8 +4,8 @@ branch-defaults:
     group_suffix: null
 environment-defaults:
   CityBikes-env:
-    branch: main
-    repository: origin
+    branch: null
+    repository: null
 global:
   application_name: CityBikes
   branch: null
