@@ -1,4 +1,4 @@
-# City Bikes - Online Bike Marketplace
+## City Bikes - Online Bike Marketplace
 
 City Bikes is a Django-powered online platform that facilitates buying and selling bikes. It utilizes Django Rest Framework for API development and integrates JSON Web Tokens (JWT) for security and authentication.
 
@@ -27,7 +27,7 @@ python manage.py runserver
 
 Your City Bikes app should now be running at http://localhost:8000/.
 
-### Prerequisites
+## Prerequisites
 
 - Python (version 3.6 or later)
 - Django (version 3.2)

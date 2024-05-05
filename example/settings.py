@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-qngh_%6m8+p#t_)tlsad^jvz1x8o5qs7ocpte(cyr28f6m%1ky
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ 'CityBikes-env.eba-4spbiucr.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = [ ]
 
 
 # Application definition
@@ -95,17 +95,24 @@ WSGI_APPLICATION = 'example.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangodb',
-        'USER': 'postgres',
-        'PASSWORD': 'django123',
-        'HOST': 'djangodb.cx66626swkbj.us-west-2.rds.amazonaws.com',
-        'PORT': '5432',
+if 'djangodb' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['djangodb'],
+            'USER': os.environ['postgres'],
+            'PASSWORD': os.environ['django123'],
+            'HOST': os.environ['localhost'],
+            'PORT': os.environ['5432'],
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

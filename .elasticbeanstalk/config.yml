@@ -2,10 +2,12 @@ branch-defaults:
   main:
     environment: CityBikes-env
     group_suffix: null
+  production:
+    environment: CityBikes-env
 environment-defaults:
   CityBikes-env:
-    branch: null
-    repository: null
+    branch: production
+    repository: origin
 global:
   application_name: CityBikes
   branch: null
