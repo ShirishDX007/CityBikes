@@ -1,0 +1,10 @@
+New Listing Created
+
+Hello {{ listing.user.username }},
+
+Your new listing "{{ listing.title }}" has been successfully created.
+
+Thank you for using our platform.
+
+Regards,
+Your Bike Listing App Team

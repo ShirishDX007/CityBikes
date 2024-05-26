@@ -95,24 +95,30 @@ WSGI_APPLICATION = 'example.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if 'djangodb' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ['djangodb'],
-            'USER': os.environ['postgres'],
-            'PASSWORD': os.environ['django123'],
-            'HOST': os.environ['localhost'],
-            'PORT': os.environ['5432'],
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'djangodb',
+        'USER': 'postgres',
+        'PASSWORD': 'django123',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -162,3 +168,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_FROM_EMAIL = 'shirishdande775@gmail.com'
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_SES_ACCESS_KEY_ID = 'AKIA2UC26TQJOY2Q5MU4'
+AWS_SES_SECRET_ACCESS_KEY = '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'
+AWS_SES_REGION_NAME = 'us-east-1'  
+AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
