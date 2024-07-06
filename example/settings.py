@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import config
+from example.secrets_manager import get_secret
+
+secret_name = 'AWS_ses_east'
+secrets = get_secret(secret_name)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -173,6 +177,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
 # DEFAULT_FROM_EMAIL = 'shirishdande775@gmail.com'
 # EMAIL_BACKEND = 'django_ses.SESBackend'
 # AWS_SES_ACCESS_KEY_ID = config.AWS_SES_ACCESS_KEY_ID
@@ -185,3 +190,11 @@ if DEBUG:
 
 
 
+=======
+DEFAULT_FROM_EMAIL = 'shirishdande775@gmail.com'
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_SES_ACCESS_KEY_ID = secrets['AWS_SES_ACCESS_KEY_ID']
+AWS_SES_SECRET_ACCESS_KEY = secrets['AWS_SES_SECRET_ACCESS_KEY']
+AWS_SES_REGION_NAME = 'us-east-1' 
+AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
+>>>>>>> 5c2b98b43aee81b548a08504787cacbfedad0c4c
