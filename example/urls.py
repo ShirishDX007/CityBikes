@@ -20,10 +20,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from listings.views import home, count_visit
+import debug_toolbar
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('__debug__/', include(debug_toolbar.urls)),
     path('', include('listings.urls')),
     path('users/', include('users.urls')),
     path('api/', include('api.urls')),
