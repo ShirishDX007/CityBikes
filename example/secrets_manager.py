@@ -2,8 +2,15 @@ import boto3
 import json
 
 def get_secret(secret_name):
+
+    secret_name = "AWS_ses_east_new"
+    region_name = "us-east-1"
     # Create a Secrets Manager client
-    client = boto3.client('secretsmanager')
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region_name
+    )
 
     try:
         get_secret_value_response = client.get_secret_value(SecretId=secret_name)

@@ -15,9 +15,11 @@ import os
 import config
 from example.secrets_manager import get_secret
 
-secret_name = 'AWS_ses_east'
+secret_name = 'AWS_ses_east_new'
 secrets = get_secret(secret_name)
 
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,7 +33,7 @@ SECRET_KEY = config.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ ]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -170,19 +172,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# DEFAULT_FROM_EMAIL = 'shirishdande775@gmail.com'
-# EMAIL_BACKEND = 'django_ses.SESBackend'
-# AWS_SES_ACCESS_KEY_ID = config.AWS_SES_ACCESS_KEY_ID
-# AWS_SES_SECRET_ACCESS_KEY = config.AWS_SES_SECRET_ACCESS_KEY
-# AWS_SES_REGION_NAME = config.AWS_SES_REGION_NAME 
-# AWS_SES_REGION_ENDPOINT = config.AWS_SES_REGION_ENDPOINT
+DEFAULT_FROM_EMAIL = 'shirishdande775@gmail.com'
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_SES_ACCESS_KEY_ID = secrets.get('AWS_SES_ACCESS_KEY_ID')
+AWS_SES_SECRET_ACCESS_KEY = secrets.get('AWS_SES_SECRET_ACCESS_KEY')
+AWS_SES_REGION_NAME = 'us-east-1' 
+AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
 
 if DEBUG:
     INTERNAL_IPS = ["127.0.0.1"]
